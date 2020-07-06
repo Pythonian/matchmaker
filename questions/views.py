@@ -12,7 +12,7 @@ from .models import Question, Answer, UserAnswer
 
 
 def single(request, id):
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 
 		queryset = Question.objects.all().order_by('-timestamp')
 		instance = get_object_or_404(Question, id=id)
@@ -88,7 +88,7 @@ def single(request, id):
 
 
 def home(request):
-	if request.user.is_authenticated():
+	if request.user.is_authenticated:
 		form = UserResponseForm(request.POST or None)
 		if form.is_valid():
 			question_id = form.cleaned_data.get('question_id')
@@ -97,7 +97,7 @@ def home(request):
 			answer_instance = Answer.objects.get(id=answer_id)
 
 		queryset = Question.objects.all().order_by('-timestamp')
-		instance = queryset[1]
+		instance = queryset
 		context = {
 			"form": form,
 			"instance": instance,

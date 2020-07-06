@@ -8,7 +8,7 @@ from questions.models import Question
 
 
 def home(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
 
         # PositionMatch.objects.update_top_suggestions(request.user, 20)
         matches = Match.objects.get_matches_with_percent(request.user)[:6]

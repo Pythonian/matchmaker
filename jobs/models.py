@@ -13,7 +13,7 @@ class Job(models.Model):
         return self.text
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(self.text)
         return super().save(*args, **kwargs)
 
 

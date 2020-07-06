@@ -148,7 +148,8 @@ class PositionMatchManager(models.Manager):
         matches = Match.objects.get_matches(user)[:match_int]
         for match in matches:
             job_set = match[0].userjob_set.all()
-            if job_set.count > 0:
+            job_set_count = job_set.count()
+            if job_set_count > 0:
                 for job in job_set:
                     try:
                         the_job = Job.objects.get(text__iexact=job.position)

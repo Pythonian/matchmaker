@@ -65,7 +65,7 @@ def profile_view(request, username):
 @login_required
 def job_add(request):
     title = "Add Job"
-    job = UserJob.objects.all()[0]
+    job = UserJob.objects.all()
     form = UserJobForm(request.POST or None)
     if form.is_valid():
         instance = form.save(commit=False)
